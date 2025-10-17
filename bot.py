@@ -14,7 +14,7 @@ import logging
 import random
 from dotenv import load_dotenv
 import telebot
-from telebot import types
+from telebot import types, apihelper
 
 # Загрузка переменных окружения
 load_dotenv()
@@ -34,6 +34,9 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+# ВАЖНО: Включаем middleware ДО инициализации бота!
+apihelper.ENABLE_MIDDLEWARE = True
 
 # Инициализация бота
 bot = telebot.TeleBot(BOT_TOKEN)
